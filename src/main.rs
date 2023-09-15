@@ -49,6 +49,10 @@ impl GameState for State {
         ctx.set_active_console(1);
         ctx.cls();
         ctx.cls();
+
+        //execute systems
+        // render draw buffer
+        
         self.map.render(ctx, &self.camera);
         self.player.update(ctx, &self.map, &mut self.camera);
         self.player.render(ctx, &self.camera);
