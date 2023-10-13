@@ -4,7 +4,7 @@ use crate::prelude::*;
 pub fn spawn_player(ecs: &mut World, pos: Point) { // func requires a mutable reference to the World and the location to spawn the player                                         
     ecs.push(( // component created by calling push -- commponents separated ina tuple
         // CALLING PUSH CREATES A NEW ENTITY COMPOSE OF THE LISTED COMPONENTS
-            Player
+            Player{},
             pos,
             Render{ // PLAYERS APPEARANCE
                 color: ColorPair::new(WHITE, BLACK),
