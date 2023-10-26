@@ -64,7 +64,7 @@ impl State {
             ecs,
             resources,
             systems: build_scheduler(),
-            map,
+            map: Map::new(),
             // player:Player::new(map_builder.player_start); 
             // camera: Camera::new(map_builder.player_start); 
             // map_builder; 
