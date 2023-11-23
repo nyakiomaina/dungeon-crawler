@@ -36,6 +36,7 @@ pub const DISPLAY_WIDTH:i32 = SCREEN_WIDTH / 2;
 pub const DISPLAY_HEIGHT:i32 = SCREEN_HEIGHT / 2;
 
 // The main game state structure.
+#[allow(dead_code)]
 struct State {
     ecs: World, // The Entity Component System world.
     resources: Resources, // Resources used in the game.
@@ -55,7 +56,12 @@ impl State {
 
         // Spawning the player at the designated starting position.
         spawn_player(&mut ecs, map_builder.player_start);
-        
+        map_builder.rooms
+            .iter()
+            .skip(1)
+            .map(|r|r.center())
+            .for_each(|pos| spawn_monster(&mut ecs, &mut rng, pos));
+
         // Inserting the map and camera into resources.
         resources.insert(map_builder.map);
         resources.insert(Camera::new(map_builder.player_start));
